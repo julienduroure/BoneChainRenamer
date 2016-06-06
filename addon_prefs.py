@@ -35,6 +35,7 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 	quickrigging_prefs_current_suffix_index = bpy.props.IntProperty(default=-1)
 	quickrigging_prefs_suffix_list          = bpy.props.CollectionProperty(type=SuffixItem)
 	quickrigging_prefs_bone_separator       = bpy.props.StringProperty()
+	quickrigging_prefs_count          		= bpy.props.EnumProperty(items=quickrigging_prefs_count_items, default="INT")
 
 	def draw(self, context):
 		layout = self.layout
@@ -48,7 +49,7 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 			col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", addonpref(), "quickrigging_prefs_suffix_list", addonpref(), "quickrigging_prefs_current_suffix_index")
 			col.label(text="Suffix List")
 			col.prop(self,"quickrigging_prefs_bone_separator", text="Separator")
-			col.prop(context.scene,"quickrigging_prefs_count", text="Couting method")
+			col.prop(self,"quickrigging_prefs_count", text="Couting method")
 			col = row.column(align=True)
 			col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
 			col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index

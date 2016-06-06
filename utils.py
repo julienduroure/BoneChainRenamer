@@ -32,9 +32,9 @@ def get_suffix_length(suffix):
 	return list(set(len_))
 
 def get_count(int_):
-	if bpy.context.scene.quickrigging_prefs_count == "INT":
+	if addonpref().quickrigging_prefs_count == "INT":
 		count = str(int_)
-	elif bpy.context.scene.quickrigging_prefs_count == "ALPHA":
+	elif addonpref().quickrigging_prefs_count == "ALPHA":
 		count = chr(int_ + ord('a'))
 	else:
 		count = str(int_) #default

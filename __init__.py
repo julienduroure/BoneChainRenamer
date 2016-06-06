@@ -59,10 +59,6 @@ def register():
 	ui_panel.register()
 	ui_list.register()
 
-	bpy.types.Scene.quickrigging_prefs_count          = bpy.props.EnumProperty(items=quickrigging_prefs_count_items,
-                                                    		default="INT",
-                                                    		)
-
 def unregister():
 	addon_prefs.unregister()
 	glob.unregister()
@@ -70,5 +66,3 @@ def unregister():
 	ui_ops.unregister()
 	ui_panel.unregister()
 	ui_list.unregister()
-
-	del bpy.types.Scene.quickrigging_prefs_count
