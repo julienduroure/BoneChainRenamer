@@ -48,10 +48,6 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 			col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
 			col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
 
-
-			col = row.column()
-			col.prop(context.scene,"quickrigging_prefs_bonesegment", text="Segments for bones")
-
 		else:
 			layout.label("Warning, you have to init data before using this addon", icon="ERROR")
 			layout.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
