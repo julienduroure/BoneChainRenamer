@@ -47,10 +47,10 @@ class BoneChainRename(bpy.types.Operator):
 	def execute(self, context):
 
 		# check addon is initialized
-		if len(context.scene.quickrigging_prefs_suffix_list) == 0:
+		if len(addonpref().quickrigging_prefs_suffix_list) == 0:
 			set_default_values()
 
-		side_suffix_ = context.scene.quickrigging_prefs_suffix_list
+		side_suffix_ = addonpref().quickrigging_prefs_suffix_list
 		side_suffix  = []
 		for suf in side_suffix_:
 			side_suffix.append(suf.name)

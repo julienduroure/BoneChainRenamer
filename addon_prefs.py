@@ -26,21 +26,25 @@ import bpy
 from .glob import *
 from .ops import *
 
+class SuffixItem(bpy.types.PropertyGroup):
+	suffix = bpy.props.StringProperty(name="suffix", default="")
+
 class QuickRiggingPreferences(bpy.types.AddonPreferences):
 	bl_idname = __package__
 
-	bpy.types.Scene.quickrigging_prefs_current_suffix_index = bpy.props.IntProperty(default=-1)
+	quickrigging_prefs_current_suffix_index = bpy.props.IntProperty(default=-1)
+	quickrigging_prefs_suffix_list          = bpy.props.CollectionProperty(type=SuffixItem)
 
 	def draw(self, context):
 		layout = self.layout
 
-		if len(context.scene.quickrigging_prefs_suffix_list) > 0:
+		if len(addonpref().quickrigging_prefs_suffix_list) > 0:
 			row = layout.row()
 
-			index = context.scene.quickrigging_prefs_current_suffix_index
+			index = self.quickrigging_prefs_current_suffix_index
 
 			col = row.column()
-			col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", context.scene, "quickrigging_prefs_suffix_list", context.scene, "quickrigging_prefs_current_suffix_index")
+			col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", addonpref(), "quickrigging_prefs_suffix_list", addonpref(), "quickrigging_prefs_current_suffix_index")
 			col.label(text="Suffix List")
 			col.prop(context.scene,"quickrigging_prefs_bone_separator", text="Separator")
 			col.prop(context.scene,"quickrigging_prefs_count", text="Couting method")
@@ -53,7 +57,9 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 			layout.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
 
 def register():
+	bpy.utils.register_class(SuffixItem)
 	bpy.utils.register_class(QuickRiggingPreferences)
 
 def unregister():
+	bpy.utils.unregister_class(SuffixItem)
 	bpy.utils.unregister_class(QuickRiggingPreferences)

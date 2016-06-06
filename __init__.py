@@ -59,7 +59,6 @@ def register():
 	ui_panel.register()
 	ui_list.register()
 
-	bpy.types.Scene.quickrigging_prefs_suffix_list    = bpy.props.CollectionProperty(type=SuffixItem)
 	bpy.types.Scene.quickrigging_prefs_bone_separator = bpy.props.StringProperty()
 	bpy.types.Scene.quickrigging_prefs_count          = bpy.props.EnumProperty(items=quickrigging_prefs_count_items,
                                                     		default="INT",

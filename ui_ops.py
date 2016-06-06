@@ -37,11 +37,10 @@ class WM_OT_quickrigging_prefs_suffix_add(bpy.types.Operator):
 		return bool(context.scene)
 
 	def execute(self, context):
-		scene = context.scene
-		idx = len(scene.quickrigging_prefs_suffix_list)
-		suff = scene.quickrigging_prefs_suffix_list.add()
+		idx = len(addonpref().quickrigging_prefs_suffix_list)
+		suff = addonpref().quickrigging_prefs_suffix_list.add()
 		suff.name = "Enter new suffix here"
-		scene.quickrigging_prefs_current_suffix_index = idx
+		addonpref().quickrigging_prefs_current_suffix_index = idx
 
 		return {'FINISHED'}
 
@@ -56,11 +55,10 @@ class WM_OT_quickrigging_prefs_suffix_remove(bpy.types.Operator):
 		return bool(context.scene)
 
 	def execute(self, context):
-		scene = context.scene
 		idx = self.suffix_index
-		scene.quickrigging_prefs_suffix_list.remove(idx)
-		if scene.quickrigging_prefs_current_suffix_index > len(scene.quickrigging_prefs_suffix_list) - 1:
-			scene.quickrigging_prefs_current_suffix_index = len(scene.quickrigging_prefs_suffix_list) - 1
+		addonpref().quickrigging_prefs_suffix_list.remove(idx)
+		if addonpref().quickrigging_prefs_current_suffix_index > len(addonpref().quickrigging_prefs_suffix_list) - 1:
+			addonpref().quickrigging_prefs_current_suffix_index = len(addonpref().quickrigging_prefs_suffix_list) - 1
 
 		return {'FINISHED'}
 
@@ -70,4 +68,4 @@ def register():
 
 def unregister():
 	bpy.utils.unregister_class(WM_OT_quickrigging_prefs_suffix_add)
-	bpy.utils.unregister_class(WM_OT_quickrigging_prefs_suffix_remove)	
+	bpy.utils.unregister_class(WM_OT_quickrigging_prefs_suffix_remove)

@@ -41,10 +41,10 @@ def get_count(int_):
 	return count
 
 def set_new_suffix_in_prefs(suf):
-	idx = len(bpy.context.scene.quickrigging_prefs_suffix_list)
-	suff = bpy.context.scene.quickrigging_prefs_suffix_list.add()
+	idx = len(addonpref().quickrigging_prefs_suffix_list)
+	suff = addonpref().quickrigging_prefs_suffix_list.add()
 	suff.name = suf
-	bpy.context.scene.quickrigging_prefs_current_suffix_index = idx
+	addonpref().quickrigging_prefs_current_suffix_index = idx
 
 def set_default_values():
 	set_new_suffix_in_prefs(".L")

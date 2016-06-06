@@ -31,11 +31,8 @@ quickrigging_prefs_count_items = [
     ("ALPHA", "Letter", "Alphanumeric", 2),
 ]
 
-class SuffixItem(bpy.types.PropertyGroup):
-	suffix = bpy.props.StringProperty(name="suffix", default="")
-
 def register():
-    bpy.utils.register_class(SuffixItem)
+    pass
 
 def unregister():
-    bpy.utils.unregister_class(SuffixItem)
+    pass
