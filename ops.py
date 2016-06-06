@@ -56,7 +56,7 @@ class BoneChainRename(bpy.types.Operator):
 			side_suffix.append(suf.name)
 		len_ = get_suffix_length(side_suffix)
 
-		separator = context.scene.quickrigging_prefs_bone_separator
+		separator = addonpref().quickrigging_prefs_bone_separator
 
 		selected_bone_names = []
 		new_name_selected = {}

@@ -53,7 +53,7 @@ def set_default_values():
 	set_new_suffix_in_prefs(".r")
 	set_new_suffix_in_prefs("left")
 	set_new_suffix_in_prefs("right")
-	bpy.context.scene.quickrigging_prefs_bone_separator = "_"
+	addonpref().quickrigging_prefs_bone_separator = "_"
 
 #shortcut to prefs
 def addonpref():
