@@ -28,6 +28,9 @@ bl_info = {
 	"blender": (2,77, 0),
 	"description": "Bone Chain Renamer",
 	"category": "Rigging",
+	"location": "View 3D tools, tab 'BoneChainRenamer'",
+	"wiki_url": "http://blerifa.com/BoneChainRenamer/",
+	"tracker_url": "https://github.com/julienduroure/BoneChainRenamer/issues/",
 }
 
 if "bpy" in locals():
