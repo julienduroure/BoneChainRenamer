@@ -30,7 +30,7 @@ class QuickRiggingPanel(bpy.types.Panel):
     bl_idname = "quick_rigging"
     bl_space_type = "VIEW_3D"
     bl_region_type = "TOOLS"
-    bl_category = "Quick Rigging"
+    bl_category = "BoneChainRenamer"
 
     @classmethod
     def poll(self, context):
