@@ -34,7 +34,7 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 	def draw(self, context):
 		layout = self.layout
 
-		if context.scene.quickrigging_prefs_datainited == True:
+		if len(context.scene.quickrigging_prefs_suffix_list) > 0:
 			row = layout.row()
 
 			index = context.scene.quickrigging_prefs_current_suffix_index

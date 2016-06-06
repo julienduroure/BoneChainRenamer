@@ -36,7 +36,6 @@ class InitAddonOperator(bpy.types.Operator):
 
 	def execute(self, context):
 		set_default_values()
-		bpy.context.scene.quickrigging_prefs_datainited = True
 
 		return {'FINISHED'}
 
@@ -48,9 +47,8 @@ class BoneChainRename(bpy.types.Operator):
 	def execute(self, context):
 
 		# check addon is initialized
-		if context.scene.quickrigging_prefs_datainited == False:
-			self.report(type={"ERROR"},message="Addon is not initialized")
-			return {'CANCELLED'}
+		if len(context.scene.quickrigging_prefs_suffix_list) == 0:
+			set_default_values()
 
 		side_suffix_ = context.scene.quickrigging_prefs_suffix_list
 		side_suffix  = []
@@ -173,4 +171,4 @@ def register():
 
 def unregister():
 	bpy.utils.unregister_class(InitAddonOperator)
-	bpy.utils.unregister_class(BoneChainRename)	
+	bpy.utils.unregister_class(BoneChainRename)

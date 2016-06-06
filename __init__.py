@@ -64,8 +64,6 @@ def register():
 	bpy.types.Scene.quickrigging_prefs_count          = bpy.props.EnumProperty(items=quickrigging_prefs_count_items,
                                                     		default="INT",
                                                     		)
-	bpy.types.Scene.quickrigging_prefs_datainited     = bpy.props.BoolProperty(default=False)
-
 
 def unregister():
 	addon_prefs.unregister()
@@ -78,4 +76,3 @@ def unregister():
 	del bpy.types.Scene.quickrigging_prefs_suffix_list
 	del bpy.types.Scene.quickrigging_prefs_bone_separator
 	del bpy.types.Scene.quickrigging_prefs_count
-	del bpy.types.Scene.quickrigging_prefs_datainited

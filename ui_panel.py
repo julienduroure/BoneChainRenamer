@@ -37,15 +37,11 @@ class QuickRiggingPanel(bpy.types.Panel):
         return True #TODO armature + edit_mode
 
     def draw(self, context):
-        if bpy.context.scene.quickrigging_prefs_datainited == False:
-        	pass
-		#TODO Warning message
 
-        col = self.layout.column()
-        col.operator("bones.chain_rename")
+        self.layout.operator("bones.chain_rename")
 
 def register():
     bpy.utils.register_class(QuickRiggingPanel)
 
 def unregister():
-    bpy.utils.unregister_class(QuickRiggingPanel)    
+    bpy.utils.unregister_class(QuickRiggingPanel)
