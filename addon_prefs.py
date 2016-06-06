@@ -35,31 +35,23 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 		layout = self.layout
 
 		if context.scene.quickrigging_prefs_datainited == True:
-			layout.prop(context.scene, "quickrigging_prefs_tab1", text="Preferences", icon="QUESTION")
-			if context.scene.quickrigging_prefs_tab1:
-				layout.label(text="Here are Quick Rigging Addon Preferences.")
-				row = layout.row()
+			row = layout.row()
 
-				index = context.scene.quickrigging_prefs_current_suffix_index
+			index = context.scene.quickrigging_prefs_current_suffix_index
 
-				col = row.column()
-				col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", context.scene, "quickrigging_prefs_suffix_list", context.scene, "quickrigging_prefs_current_suffix_index")
-				col.label(text="Suffix List")
-				col.prop(context.scene,"quickrigging_prefs_bone_separator", text="Separator")
-				col.prop(context.scene,"quickrigging_prefs_count", text="Couting method")
-				col = row.column(align=True)
-				col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
-				col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
+			col = row.column()
+			col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", context.scene, "quickrigging_prefs_suffix_list", context.scene, "quickrigging_prefs_current_suffix_index")
+			col.label(text="Suffix List")
+			col.prop(context.scene,"quickrigging_prefs_bone_separator", text="Separator")
+			col.prop(context.scene,"quickrigging_prefs_count", text="Couting method")
+			col = row.column(align=True)
+			col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
+			col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
 
 
-				col = row.column()
-				col.prop(context.scene,"quickrigging_prefs_bonesegment", text="Segments for bones")
+			col = row.column()
+			col.prop(context.scene,"quickrigging_prefs_bonesegment", text="Segments for bones")
 
-			layout.prop(context.scene, "quickrigging_prefs_tab2", text="Infos", icon="URL")
-			if context.scene.quickrigging_prefs_tab2:
-				row = layout.row()
-				row.operator("wm.url_open", text="julienduroure.com").url = "http://julienduroure.com/"
-				row.operator("wm.url_open", text="Julien Duroure's Ghitub").url = "https://github.com/julienduroure/scripts"
 		else:
 			layout.label("Warning, you have to init data before using this addon", icon="ERROR")
 			layout.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
