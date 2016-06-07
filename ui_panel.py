@@ -25,7 +25,7 @@ import bpy
 
 from .glob import *
 
-class QuickRiggingPanel(bpy.types.Panel):
+class JuBCR_Panel(bpy.types.Panel):
     bl_label  = "Quick Rigging"
     bl_idname = "quick_rigging"
     bl_space_type = "VIEW_3D"
@@ -41,7 +41,7 @@ class QuickRiggingPanel(bpy.types.Panel):
         self.layout.operator("bones.chain_rename")
 
 def register():
-    bpy.utils.register_class(QuickRiggingPanel)
+    bpy.utils.register_class(JuBCR_Panel)
 
 def unregister():
-    bpy.utils.unregister_class(QuickRiggingPanel)
+    bpy.utils.unregister_class(JuBCR_Panel)

@@ -26,7 +26,7 @@ import bpy
 from .utils import *
 from .ui_panel import *
 
-quickrigging_prefs_count_items = [
+JuBCR_count_items = [
     ("INT", "Integer", "Integer", 1),
     ("ALPHA", "Letter", "Alphanumeric", 2),
 ]

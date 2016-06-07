@@ -26,7 +26,7 @@ import bpy
 from .glob import *
 from .utils import *
 
-class WM_OT_quickrigging_prefs_suffix_add(bpy.types.Operator):
+class JuBCR_suffix_add(bpy.types.Operator):
 	bl_idname = "wm.quickrigging_prefs_suffix_add"
 	bl_label  = "Add Suffix"
 
@@ -45,7 +45,7 @@ class WM_OT_quickrigging_prefs_suffix_add(bpy.types.Operator):
 
 		return {'FINISHED'}
 
-class WM_OT_quickrigging_prefs_suffix_remove(bpy.types.Operator):
+class JuBCR_suffix_remove(bpy.types.Operator):
 	bl_idname = "wm.quickrigging_prefs_suffix_remove"
 	bl_label  = "Remove Suffix"
 
@@ -64,9 +64,9 @@ class WM_OT_quickrigging_prefs_suffix_remove(bpy.types.Operator):
 		return {'FINISHED'}
 
 def register():
-	bpy.utils.register_class(WM_OT_quickrigging_prefs_suffix_add)
-	bpy.utils.register_class(WM_OT_quickrigging_prefs_suffix_remove)
+	bpy.utils.register_class(JuBCR_suffix_add)
+	bpy.utils.register_class(JuBCR_suffix_remove)
 
 def unregister():
-	bpy.utils.unregister_class(WM_OT_quickrigging_prefs_suffix_add)
-	bpy.utils.unregister_class(WM_OT_quickrigging_prefs_suffix_remove)
+	bpy.utils.unregister_class(JuBCR_suffix_add)
+	bpy.utils.unregister_class(JuBCR_suffix_remove)

@@ -26,17 +26,17 @@ import bpy
 from .glob import *
 from .ops import *
 
-class SuffixItem(bpy.types.PropertyGroup):
+class JuBCR_SuffixItem(bpy.types.PropertyGroup):
 	left  = bpy.props.StringProperty(default="")
 	right = bpy.props.StringProperty(default="")
 
-class QuickRiggingPreferences(bpy.types.AddonPreferences):
+class JuBCR_AddonPref(bpy.types.AddonPreferences):
 	bl_idname = __package__
 
 	quickrigging_prefs_current_suffix_index = bpy.props.IntProperty(default=-1)
-	quickrigging_prefs_suffix_list          = bpy.props.CollectionProperty(type=SuffixItem)
+	quickrigging_prefs_suffix_list          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
 	quickrigging_prefs_bone_separator       = bpy.props.StringProperty()
-	quickrigging_prefs_count          		= bpy.props.EnumProperty(items=quickrigging_prefs_count_items, default="INT")
+	quickrigging_prefs_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
 
 	def draw(self, context):
 		layout = self.layout
@@ -59,9 +59,9 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 			layout.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
 
 def register():
-	bpy.utils.register_class(SuffixItem)
-	bpy.utils.register_class(QuickRiggingPreferences)
+	bpy.utils.register_class(JuBCR_SuffixItem)
+	bpy.utils.register_class(JuBCR_AddonPref)
 
 def unregister():
-	bpy.utils.unregister_class(SuffixItem)
-	bpy.utils.unregister_class(QuickRiggingPreferences)
+	bpy.utils.unregister_class(JuBCR_SuffixItem)
+	bpy.utils.unregister_class(JuBCR_AddonPref)
