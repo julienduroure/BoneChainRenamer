@@ -44,6 +44,10 @@ class BoneChainRename(bpy.types.Operator):
 	bl_label  = "Bone Chain Rename"
 	bl_options = {'REGISTER', 'UNDO'}
 
+	@classmethod
+	def poll(cls, context):
+		return context.active_object and context.active_object.type == "ARMATURE" and context.mode == 'EDIT_ARMATURE' and len(context.selected_bones) > 0
+
 	def execute(self, context):
 
 		# check addon is initialized
