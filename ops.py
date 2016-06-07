@@ -96,18 +96,22 @@ class BoneChainRename(bpy.types.Operator):
 		cpt = 0
 		count = get_count(cpt)
 
-		while True:
-			tmp_name = active_bone_name_root + separator + count + suffix
-			found = False
-			for bone in bones:
-				if bone.name == tmp_name:
-					found = True
+		if len(selected_bone_names) == 1 and selected_bone_names[0] == active_bone_name and addonpref().ju_brc_single_chain_no_count == True:
+			separator = ""
+			count = ""
+		else:
+			while True:
+				tmp_name = active_bone_name_root + separator + count + suffix
+				found = False
+				for bone in bones:
+					if bone.name == tmp_name:
+						found = True
+						break
+				if found == False:
 					break
-			if found == False:
-				break
-			else:
-				cpt = cpt + 1
-				count = get_count(cpt)
+				else:
+					cpt = cpt + 1
+					count = get_count(cpt)
 
 		#rename active bone
 		updates.append([bones[active_bone_name].name,active_bone_name_root + separator + count + suffix])

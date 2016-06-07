@@ -41,6 +41,8 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 
 	category = bpy.props.StringProperty(name="Category", default="BoneChainRenamer", update=update_panel)
 
+	ju_brc_single_chain_no_count = bpy.props.BoolProperty(name="No count when single chain rename", default=True)
+
 	def draw(self, context):
 		layout = self.layout
 
@@ -71,6 +73,12 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 		box = row_global.box()
 		row = box.row()
 		row.prop(self, "category")
+
+		row_global = layout.row()
+		box = row_global.box()
+		row = box.row()
+		row.prop(self, "ju_brc_single_chain_no_count")
+
 
 
 def register():
