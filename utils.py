@@ -40,19 +40,17 @@ def get_count(int_):
 		count = str(int_) #default
 	return count
 
-def set_new_suffix_in_prefs(suf):
+def set_new_suffix_in_prefs(left,right):
 	idx = len(addonpref().quickrigging_prefs_suffix_list)
 	suff = addonpref().quickrigging_prefs_suffix_list.add()
-	suff.name = suf
+	suff.left  = left
+	suff.right = right
 	addonpref().quickrigging_prefs_current_suffix_index = idx
 
 def set_default_values():
-	set_new_suffix_in_prefs(".L")
-	set_new_suffix_in_prefs(".R")
-	set_new_suffix_in_prefs(".l")
-	set_new_suffix_in_prefs(".r")
-	set_new_suffix_in_prefs("left")
-	set_new_suffix_in_prefs("right")
+	set_new_suffix_in_prefs(".L", ".R")
+	set_new_suffix_in_prefs(".l", ".r")
+	set_new_suffix_in_prefs("left", "right")
 	addonpref().quickrigging_prefs_bone_separator = "_"
 
 #shortcut to prefs

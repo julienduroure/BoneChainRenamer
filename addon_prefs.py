@@ -27,7 +27,8 @@ from .glob import *
 from .ops import *
 
 class SuffixItem(bpy.types.PropertyGroup):
-	suffix = bpy.props.StringProperty(name="suffix", default="")
+	left  = bpy.props.StringProperty(default="")
+	right = bpy.props.StringProperty(default="")
 
 class QuickRiggingPreferences(bpy.types.AddonPreferences):
 	bl_idname = __package__
@@ -46,8 +47,7 @@ class QuickRiggingPreferences(bpy.types.AddonPreferences):
 			index = self.quickrigging_prefs_current_suffix_index
 
 			col = row.column()
-			col.template_list("UI_UL_list", "quickrigging_prefs_suffix_list_list", addonpref(), "quickrigging_prefs_suffix_list", addonpref(), "quickrigging_prefs_current_suffix_index")
-			col.label(text="Suffix List")
+			col.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "quickrigging_prefs_suffix_list", addonpref(), "quickrigging_prefs_current_suffix_index")
 			col.prop(self,"quickrigging_prefs_bone_separator", text="Separator")
 			col.prop(self,"quickrigging_prefs_count", text="Couting method")
 			col = row.column(align=True)

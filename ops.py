@@ -53,7 +53,8 @@ class BoneChainRename(bpy.types.Operator):
 		side_suffix_ = addonpref().quickrigging_prefs_suffix_list
 		side_suffix  = []
 		for suf in side_suffix_:
-			side_suffix.append(suf.name)
+			side_suffix.append(suf.left)
+			side_suffix.append(suf.right)
 		len_ = get_suffix_length(side_suffix)
 
 		separator = addonpref().quickrigging_prefs_bone_separator

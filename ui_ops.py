@@ -39,7 +39,8 @@ class WM_OT_quickrigging_prefs_suffix_add(bpy.types.Operator):
 	def execute(self, context):
 		idx = len(addonpref().quickrigging_prefs_suffix_list)
 		suff = addonpref().quickrigging_prefs_suffix_list.add()
-		suff.name = "Enter new suffix here"
+		suff.left = ".left"
+		suff.right = ".left"
 		addonpref().quickrigging_prefs_current_suffix_index = idx
 
 		return {'FINISHED'}
