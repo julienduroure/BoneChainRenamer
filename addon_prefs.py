@@ -49,7 +49,7 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 			col = row.column()
 			col.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "ju_bcr_suffix", addonpref(), "ju_bcr_suffix_index")
 			col.prop(self,"ju_bcr_separator", text="Separator")
-			col.prop(self,"ju_bcr_count", text="Couting method")
+			col.prop(self,"ju_bcr_count", text="Counting method")
 			col = row.column(align=True)
 			col.operator("wm.ju_bcr_suffix_add", icon='ZOOMIN', text="")
 			col.operator("wm.ju_bcr_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
