@@ -97,7 +97,7 @@ class BoneChainRename(bpy.types.Operator):
 		count = get_count(cpt)
 
 		while True:
-			tmp_name = active_bone_name_root + count + suffix
+			tmp_name = active_bone_name_root + separator + count + suffix
 			found = False
 			for bone in bones:
 				if bone.name == tmp_name:
