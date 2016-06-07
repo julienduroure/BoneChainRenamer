@@ -25,6 +25,7 @@ import bpy
 
 from .glob import *
 from .ops import *
+from .utils import *
 
 class JuBCR_SuffixItem(bpy.types.PropertyGroup):
 	left  = bpy.props.StringProperty(default="")
@@ -37,6 +38,8 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 	ju_bcr_suffix          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
 	ju_bcr_separator       = bpy.props.StringProperty(default="_")
 	ju_bcr_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
+
+	category = bpy.props.StringProperty(name="Category", default="BoneChainRenamer", update=update_panel)
 
 	def draw(self, context):
 		layout = self.layout
@@ -63,6 +66,11 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 			col_.operator("wm.ju_bcr_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
 		else:
 			row_.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
+
+		row_global = layout.row()
+		box = row_global.box()
+		row = box.row()
+		row.prop(self, "category")
 
 
 def register():

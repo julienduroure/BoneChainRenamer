@@ -24,6 +24,7 @@
 import bpy
 
 from .glob import *
+from .ui_panel import *
 
 def get_suffix_length(suffix):
 	len_ = []
@@ -57,3 +58,10 @@ def set_default_values():
 def addonpref():
 	user_preferences = bpy.context.user_preferences
 	return user_preferences.addons[__package__].preferences
+
+def update_panel(self, context):
+	bpy.utils.unregister_class(JuBCR_Panel)
+
+	JuBCR_Panel.bl_category = addonpref().category
+
+	bpy.utils.register_class(JuBCR_Panel)
