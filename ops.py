@@ -27,8 +27,8 @@ from .glob import *
 from .utils import *
 
 class InitAddonOperator(bpy.types.Operator):
-	bl_idname = "scene.init_addon"
-	bl_label = "Init Quick Rigging Addon"
+	bl_idname = "pose.init_side_addon"
+	bl_label = "Init Sides"
 
 	@classmethod
 	def poll(cls, context):

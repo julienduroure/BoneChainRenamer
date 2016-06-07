@@ -35,28 +35,35 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 
 	ju_bcr_suffix_index = bpy.props.IntProperty(default=-1)
 	ju_bcr_suffix          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
-	ju_bcr_separator       = bpy.props.StringProperty()
+	ju_bcr_separator       = bpy.props.StringProperty(default="_")
 	ju_bcr_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
 
 	def draw(self, context):
 		layout = self.layout
 
+		row_global = layout.row()
+
+		index = self.ju_bcr_suffix_index
+
+		box = row_global.box()
+		row = box.row()
+		col = row.column()
+		row_ = col.row()
+		row_.prop(self,"ju_bcr_separator", text="Separator")
+		row_ = col.row()
+		row_.prop(self,"ju_bcr_count", text="Counting method")
+		col = row.column()
+		row_ = col.row()
 		if len(addonpref().ju_bcr_suffix) > 0:
-			row = layout.row()
+			col_ = row_.column()
+			col_.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "ju_bcr_suffix", addonpref(), "ju_bcr_suffix_index")
 
-			index = self.ju_bcr_suffix_index
-
-			col = row.column()
-			col.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "ju_bcr_suffix", addonpref(), "ju_bcr_suffix_index")
-			col.prop(self,"ju_bcr_separator", text="Separator")
-			col.prop(self,"ju_bcr_count", text="Counting method")
-			col = row.column(align=True)
-			col.operator("wm.ju_bcr_suffix_add", icon='ZOOMIN', text="")
-			col.operator("wm.ju_bcr_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
-
+			col_ = row_.column(align=True)
+			col_.operator("wm.ju_bcr_suffix_add", icon='ZOOMIN', text="")
+			col_.operator("wm.ju_bcr_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
 		else:
-			layout.label("Warning, you have to init data before using this addon", icon="ERROR")
-			layout.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
+			row_.operator(InitAddonOperator.bl_idname, text=InitAddonOperator.bl_label)
+
 
 def register():
 	bpy.utils.register_class(JuBCR_SuffixItem)
