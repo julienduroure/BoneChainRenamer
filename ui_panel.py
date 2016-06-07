@@ -34,7 +34,7 @@ class JuBCR_Panel(bpy.types.Panel):
 
     @classmethod
     def poll(self, context):
-        return True #TODO armature + edit_mode
+        return context.active_object and context.active_object.type == "ARMATURE" and context.mode == 'EDIT_ARMATURE'
 
     def draw(self, context):
 
