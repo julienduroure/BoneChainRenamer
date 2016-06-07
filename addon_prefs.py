@@ -33,23 +33,23 @@ class JuBCR_SuffixItem(bpy.types.PropertyGroup):
 class JuBCR_AddonPref(bpy.types.AddonPreferences):
 	bl_idname = __package__
 
-	quickrigging_prefs_current_suffix_index = bpy.props.IntProperty(default=-1)
-	quickrigging_prefs_suffix_list          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
-	quickrigging_prefs_bone_separator       = bpy.props.StringProperty()
-	quickrigging_prefs_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
+	ju_bcr_suffix_index = bpy.props.IntProperty(default=-1)
+	ju_bcr_suffix          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
+	ju_bcr_separator       = bpy.props.StringProperty()
+	ju_bcr_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
 
 	def draw(self, context):
 		layout = self.layout
 
-		if len(addonpref().quickrigging_prefs_suffix_list) > 0:
+		if len(addonpref().ju_bcr_suffix) > 0:
 			row = layout.row()
 
-			index = self.quickrigging_prefs_current_suffix_index
+			index = self.ju_bcr_suffix_index
 
 			col = row.column()
-			col.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "quickrigging_prefs_suffix_list", addonpref(), "quickrigging_prefs_current_suffix_index")
-			col.prop(self,"quickrigging_prefs_bone_separator", text="Separator")
-			col.prop(self,"quickrigging_prefs_count", text="Couting method")
+			col.template_list("POSE_UL_JuBCR_SideList", "", addonpref(), "ju_bcr_suffix", addonpref(), "ju_bcr_suffix_index")
+			col.prop(self,"ju_bcr_separator", text="Separator")
+			col.prop(self,"ju_bcr_count", text="Couting method")
 			col = row.column(align=True)
 			col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
 			col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index

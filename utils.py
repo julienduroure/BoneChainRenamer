@@ -32,26 +32,26 @@ def get_suffix_length(suffix):
 	return list(set(len_))
 
 def get_count(int_):
-	if addonpref().quickrigging_prefs_count == "INT":
+	if addonpref().ju_bcr_count == "INT":
 		count = str(int_)
-	elif addonpref().quickrigging_prefs_count == "ALPHA":
+	elif addonpref().ju_bcr_count == "ALPHA":
 		count = chr(int_ + ord('a'))
 	else:
 		count = str(int_) #default
 	return count
 
 def set_new_suffix_in_prefs(left,right):
-	idx = len(addonpref().quickrigging_prefs_suffix_list)
-	suff = addonpref().quickrigging_prefs_suffix_list.add()
+	idx = len(addonpref().ju_bcr_suffix)
+	suff = addonpref().ju_bcr_suffix.add()
 	suff.left  = left
 	suff.right = right
-	addonpref().quickrigging_prefs_current_suffix_index = idx
+	addonpref().ju_bcr_suffix_index = idx
 
 def set_default_values():
 	set_new_suffix_in_prefs(".L", ".R")
 	set_new_suffix_in_prefs(".l", ".r")
 	set_new_suffix_in_prefs("left", "right")
-	addonpref().quickrigging_prefs_bone_separator = "_"
+	addonpref().ju_bcr_separator = "_"
 
 #shortcut to prefs
 def addonpref():

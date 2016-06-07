@@ -47,17 +47,17 @@ class BoneChainRename(bpy.types.Operator):
 	def execute(self, context):
 
 		# check addon is initialized
-		if len(addonpref().quickrigging_prefs_suffix_list) == 0:
+		if len(addonpref().ju_bcr_suffix) == 0:
 			set_default_values()
 
-		side_suffix_ = addonpref().quickrigging_prefs_suffix_list
+		side_suffix_ = addonpref().ju_bcr_suffix
 		side_suffix  = []
 		for suf in side_suffix_:
 			side_suffix.append(suf.left)
 			side_suffix.append(suf.right)
 		len_ = get_suffix_length(side_suffix)
 
-		separator = addonpref().quickrigging_prefs_bone_separator
+		separator = addonpref().ju_bcr_separator
 
 		selected_bone_names = []
 		new_name_selected = {}

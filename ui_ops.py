@@ -37,11 +37,11 @@ class JuBCR_suffix_add(bpy.types.Operator):
 		return bool(context.scene)
 
 	def execute(self, context):
-		idx = len(addonpref().quickrigging_prefs_suffix_list)
-		suff = addonpref().quickrigging_prefs_suffix_list.add()
+		idx = len(addonpref().ju_bcr_suffix)
+		suff = addonpref().ju_bcr_suffix.add()
 		suff.left = ".left"
 		suff.right = ".left"
-		addonpref().quickrigging_prefs_current_suffix_index = idx
+		addonpref().ju_bcr_suffix_index = idx
 
 		return {'FINISHED'}
 
@@ -57,9 +57,9 @@ class JuBCR_suffix_remove(bpy.types.Operator):
 
 	def execute(self, context):
 		idx = self.suffix_index
-		addonpref().quickrigging_prefs_suffix_list.remove(idx)
-		if addonpref().quickrigging_prefs_current_suffix_index > len(addonpref().quickrigging_prefs_suffix_list) - 1:
-			addonpref().quickrigging_prefs_current_suffix_index = len(addonpref().quickrigging_prefs_suffix_list) - 1
+		addonpref().ju_bcr_suffix.remove(idx)
+		if addonpref().ju_bcr_suffix_index > len(addonpref().ju_bcr_suffix) - 1:
+			addonpref().ju_bcr_suffix_index = len(addonpref().ju_bcr_suffix) - 1
 
 		return {'FINISHED'}
 
