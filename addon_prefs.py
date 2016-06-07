@@ -51,8 +51,8 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 			col.prop(self,"ju_bcr_separator", text="Separator")
 			col.prop(self,"ju_bcr_count", text="Couting method")
 			col = row.column(align=True)
-			col.operator("wm.quickrigging_prefs_suffix_add", icon='ZOOMIN', text="")
-			col.operator("wm.quickrigging_prefs_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
+			col.operator("wm.ju_bcr_suffix_add", icon='ZOOMIN', text="")
+			col.operator("wm.ju_bcr_suffix_remove", icon='ZOOMOUT', text="").suffix_index = index
 
 		else:
 			layout.label("Warning, you have to init data before using this addon", icon="ERROR")
