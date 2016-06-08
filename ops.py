@@ -162,12 +162,15 @@ class BoneChainRename(bpy.types.Operator):
 			while child_bone:
 				#loop on children
 				if len(bones[current_bone].children) != 0:
-					child = bones[current_bone].children[0]
-					if child.use_connect == False and addonpref().ju_bcr_stop_chain_not_connected == True:
+					if len(bones[current_bone].children) > 1:
 						child_bone = False
 					else:
-						updates.append([child.name, new_name])
-						current_bone = child.name
+						child = bones[current_bone].children[0]
+						if child.use_connect == False and addonpref().ju_bcr_stop_chain_not_connected == True:
+							child_bone = False
+						else:
+							updates.append([child.name, new_name])
+							current_bone = child.name
 				else:
 					child_bone = False
 
