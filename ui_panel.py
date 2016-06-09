@@ -26,8 +26,8 @@ import bpy
 from .glob import *
 
 class JuBCR_Panel(bpy.types.Panel):
-    bl_label  = "Quick Rigging"
-    bl_idname = "quick_rigging"
+    bl_label  = "Renamer"
+    bl_idname = "bone_renamer"
     bl_space_type = "VIEW_3D"
     bl_region_type = "TOOLS"
     bl_category = "BoneChainRenamer"
