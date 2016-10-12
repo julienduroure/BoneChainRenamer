@@ -25,7 +25,7 @@ bl_info = {
 	"name": "Bone Chain Renamer",
 	"author": "Julien Duroure",
 	"version": (0, 0, 1),
-	"blender": (2,77, 0),
+	"blender": (2,78, 0),
 	"description": "Bone Chain Renamer",
 	"category": "Rigging",
 	"location": "View 3D tools, tab 'BoneChainRenamer'",
