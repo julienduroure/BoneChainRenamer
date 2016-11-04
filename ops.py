@@ -54,6 +54,7 @@ class BoneChainRename(bpy.types.Operator):
 		if len(addonpref().ju_bcr_suffix) == 0:
 			set_default_values()
 
+		# Construct a table with all suffix, based on L/R table
 		side_suffix_ = addonpref().ju_bcr_suffix
 		side_suffix  = []
 		for suf in side_suffix_:
@@ -94,7 +95,7 @@ class BoneChainRename(bpy.types.Operator):
 			active_bone_name_root = active_bone_name
 			suffix = ""
 
-		selected_bone_names.sort()
+		selected_bone_names.sort() # Sort table with alphebetic order
 
 		#retrieve next available cpt
 		cpt = 0
@@ -117,8 +118,10 @@ class BoneChainRename(bpy.types.Operator):
 					cpt = cpt + 1
 					count = get_count(cpt)
 
-		#rename active bone
+		#rename active bone :
+		#	store (old_name, new_name) in updates table
 		updates.append([bones[active_bone_name].name,active_bone_name_root + separator + count + suffix])
+		#	store "old_name --> new_name" in new_name_selected, will be used later to check if name already exists or not
 		new_name_selected[bones[active_bone_name].name] = active_bone_name_root + separator + count + suffix
 
 		#rename selected bones
@@ -150,7 +153,9 @@ class BoneChainRename(bpy.types.Operator):
 						cpt = cpt + 1
 						count = get_count(cpt)
 
+				#	store (old_name, new_name) in updates table
 				updates.append([bones[bone].name, active_bone_name_root + separator + count + suffix])
+				#	store "old_name --> new_name" in new_name_selected, will be used later to check if name already exists or not
 				new_name_selected[bones[bone].name] = active_bone_name_root + separator + count + suffix
 
 
@@ -162,11 +167,11 @@ class BoneChainRename(bpy.types.Operator):
 			while child_bone:
 				#loop on children
 				if len(bones[current_bone].children) != 0:
-					if len(bones[current_bone].children) > 1:
+					if len(bones[current_bone].children) > 1: # Stop when multiple children
 						child_bone = False
 					else:
 						child = bones[current_bone].children[0]
-						if child.use_connect == False and addonpref().ju_bcr_stop_chain_not_connected == True:
+						if child.use_connect == False and addonpref().ju_bcr_stop_chain_not_connected == True: # Conditional stop when not connected
 							child_bone = False
 						else:
 							updates.append([child.name, new_name])
@@ -174,6 +179,7 @@ class BoneChainRename(bpy.types.Operator):
 				else:
 					child_bone = False
 
+		# Now that all bones are computed, time to perform real renaming
 		for bone in updates:
 			bones[bone[0]].name = bone[1]
 
