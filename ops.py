@@ -44,6 +44,8 @@ class BoneChainRename(bpy.types.Operator):
 	bl_label  = "Bone Chain Rename"
 	bl_options = {'REGISTER', 'UNDO'}
 
+	sort_type = bpy.props.EnumProperty(items=JuCR_sort_type_items)
+
 	@classmethod
 	def poll(cls, context):
 		return context.active_object and context.active_object.type == "ARMATURE" and context.mode == 'EDIT_ARMATURE' and len(context.selected_bones) > 0
@@ -95,7 +97,10 @@ class BoneChainRename(bpy.types.Operator):
 			active_bone_name_root = active_bone_name
 			suffix = ""
 
-		selected_bone_names.sort() # Sort table with alphebetic order
+		if self.sort_type == "ALPHABETIC":
+			selected_bone_names.sort() # Sort table with alphebetic order
+		else:
+			pass
 
 		#retrieve next available cpt
 		cpt = 0

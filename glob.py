@@ -31,6 +31,10 @@ JuBCR_count_items = [
     ("ALPHA", "Letter", "Alphanumeric", 2),
 ]
 
+JuCR_sort_type_items = [
+    ("ALPHABETIC", "Alphabetic", "Alphabetic", 1),
+]
+
 def register():
     pass
 
