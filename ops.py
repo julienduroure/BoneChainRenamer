@@ -25,6 +25,7 @@ import bpy
 
 from .glob import *
 from .utils import *
+from .sort_type import *
 
 class InitAddonOperator(bpy.types.Operator):
 	bl_idname = "pose.init_side_addon"
@@ -99,6 +100,18 @@ class BoneChainRename(bpy.types.Operator):
 
 		if self.sort_type == "ALPHABETIC":
 			selected_bone_names.sort() # Sort table with alphebetic order
+		elif self.sort_type == "X_LOC":
+			selected_bone_names = sort_location(obj, selected_bone_names, 0, False)
+		elif self.sort_type == "Y_LOC":
+			selected_bone_names = sort_location(obj, selected_bone_names, 1, False)
+		elif self.sort_type == "Z_LOC":
+			selected_bone_names = sort_location(obj, selected_bone_names, 2, False)
+		elif self.sort_type == "X_LOC_REV":
+			selected_bone_names = sort_location(obj, selected_bone_names, 0, True)
+		elif self.sort_type == "Y_LOC_REV":
+			selected_bone_names = sort_location(obj, selected_bone_names, 1, True)
+		elif self.sort_type == "Z_LOC_REV":
+			selected_bone_names = sort_location(obj, selected_bone_names, 2, True)
 		else:
 			pass
 

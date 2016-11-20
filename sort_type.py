@@ -23,26 +23,16 @@
 
 import bpy
 
+from .glob import *
 from .utils import *
-from .ui_panel import *
+import operator
 
-JuBCR_count_items = [
-    ("INT", "Integer", "Integer", 1),
-    ("ALPHA", "Letter", "Alphanumeric", 2),
-]
-
-JuCR_sort_type_items = [
-    ("ALPHABETIC", "Alphabetic", "Alphabetic", 1),
-	("X_LOC", "X Location", "X Location", 2),
-	("Y_LOC", "Y Location", "Y Location", 3),
-	("Z_LOC", "Z Location", "Z Location", 4),
-	("X_LOC_REV", "-X Location", "-X Location", 5),
-	("Y_LOC_REV", "-Y Location", "-Y Location", 6),
-	("Z_LOC_REV", "-Z Location", "-Z Location", 7),
-]
-
-def register():
-    pass
-
-def unregister():
-    pass
+def sort_location(obj, tab_bones, item, reversed):
+	locations = []
+	for bone in tab_bones:
+		loc = obj.location + bpy.context.active_object.data.bones[bone].head
+		locations.append((bone, loc[item]))
+	if reversed == False:
+		return [bone[0] for bone in sorted(locations, key=operator.itemgetter(1))]
+	else:
+		return [bone[0] for bone in sorted(locations, key=operator.itemgetter(1))][::-1]

@@ -42,6 +42,7 @@ if "bpy" in locals():
     imp.reload(ui_ops)
     imp.reload(ui_panel)
     imp.reload(ops)
+    imp.reload(sort_type)
 else:
     from .addon_prefs import *
     from .glob import *
@@ -50,6 +51,7 @@ else:
     from .ui_ops import *
     from .ui_panel import *
     from .ops import *
+    from .sort_type import *
 
 
 import bpy
