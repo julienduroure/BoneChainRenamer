@@ -36,3 +36,13 @@ def sort_location(obj, tab_bones, item, reversed):
 		return [bone[0] for bone in sorted(locations, key=operator.itemgetter(1))]
 	else:
 		return [bone[0] for bone in sorted(locations, key=operator.itemgetter(1))][::-1]
+
+def sort_distance(obj, ref_bone, tab_bones, reversed):
+	distances = []
+	for bone in tab_bones:
+		dist = (ref_bone.head - bpy.context.active_object.data.bones[bone].head).length
+		distances.append((bone, dist))
+	if reversed == False:
+		return [bone[0] for bone in sorted(distances, key=operator.itemgetter(1))]
+	else:
+		return [bone[0] for bone in sorted(distances, key=operator.itemgetter(1))][::-1]
