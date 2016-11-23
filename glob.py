@@ -36,11 +36,11 @@ JuCR_sort_type_items = [
 	("X_LOC", "X Location", "X Location", 2),
 	("Y_LOC", "Y Location", "Y Location", 3),
 	("Z_LOC", "Z Location", "Z Location", 4),
-	("X_LOC_REV", "-X Location", "-X Location", 5),
-	("Y_LOC_REV", "-Y Location", "-Y Location", 6),
-	("Z_LOC_REV", "-Z Location", "-Z Location", 7),
+	("X_LOC_REV", "X Location reversed", "X Location reversed", 5),
+	("Y_LOC_REV", "Y Location reversed", "Y Location reversed", 6),
+	("Z_LOC_REV", "Z Location reversed", "Z Location reversed", 7),
 	("DISTANCE", "Distance", "Distance", 8),
-	("DISTANCE_REV", "Distance Reversed", "Distance Reversed", 9),	
+	("DISTANCE_REV", "Distance Reversed", "Distance Reversed", 9),
 ]
 
 def register():
