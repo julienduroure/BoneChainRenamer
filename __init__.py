@@ -30,7 +30,7 @@ bl_info = {
 	"category": "Rigging",
 	"location": "View 3D tools, tab 'BoneChainRenamer'",
 	"wiki_url": "http://blerifa.com/BoneChainRenamer/",
-	"tracker_url": "https://github.com/julienduroure/BoneChainRenamer/issues/",
+	"tracker_url": "https://github.com/julienduroure/BleRiFa/issues/",
 }
 
 if "bpy" in locals():
