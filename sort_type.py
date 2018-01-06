@@ -33,7 +33,7 @@ import operator
 def sort_location(obj, tab_bones, item, reversed):
 	locations = []
 	for bone in tab_bones:
-		loc = obj.location + bpy.context.active_object.data.bones[bone].head
+		loc = obj.location + bpy.context.active_object.data.bones[bone].head_local
 		locations.append((bone, loc[item]))
 	if reversed == False:
 		return [bone[0] for bone in sorted(locations, key=operator.itemgetter(1))]
