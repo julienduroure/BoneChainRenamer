@@ -42,7 +42,7 @@ class JuBCR_AddonPref(bpy.types.AddonPreferences):
 	ju_bcr_separator       = bpy.props.StringProperty(default="_")
 	ju_bcr_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
 
-	category = bpy.props.StringProperty(name="Category", default="BoneChainRenamer", update=update_panel)
+	category = bpy.props.StringProperty(name="Category", default="Tools", update=update_panel)
 
 	ju_bcr_single_chain_no_count    = bpy.props.BoolProperty(name="No count when single chain rename", default=True)
 	ju_bcr_stop_chain_not_connected = bpy.props.BoolProperty(name="Stop chain when bone is not connected", default=False)
