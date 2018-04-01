@@ -27,11 +27,11 @@
 bl_info = {
 	"name": "Bone Chain Renamer",
 	"author": "Julien Duroure",
-	"version": (0, 1, 0),
+	"version": (0, 1, 1),
 	"blender": (2,79, 0),
 	"description": "Bone Chain Renamer",
 	"category": "Rigging",
-	"location": "View 3D tools, tab 'BoneChainRenamer'",
+	"location": "View 3D tools, tab 'Tools'",
 	"wiki_url": "http://blerifa.com/BoneChainRenamer/",
 	"tracker_url": "https://github.com/julienduroure/BleRiFa/issues/",
 }
