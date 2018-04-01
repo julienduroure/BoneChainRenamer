@@ -76,6 +76,7 @@ class BoneChainRename(bpy.types.Operator):
 		bones = []
 		tree_bones = {}
 		updates = []
+		official_updates = []
 
 		#update bones list
 		bpy.ops.object.editmode_toggle()
@@ -204,8 +205,24 @@ class BoneChainRename(bpy.types.Operator):
 				else:
 					child_bone = False
 
-		# Now that all bones are computed, time to perform real renaming
+		# Now that all bones are computed, time to perform renaming
+		# But we first have to use some other name, just in case some names are already taken
+		# For example when some bones was subdivised
 		for bone in updates:
+			random_name = get_id()[:50]
+			official_updates.append([random_name, bone[1]])
+			bones[bone[0]].name = random_name
+
+		#update bones list
+		bpy.ops.object.editmode_toggle()
+		bpy.ops.object.editmode_toggle()
+
+		#update bone list after first renaming
+		obj = bpy.context.active_object
+		bones = bpy.data.armatures[obj.data.name].bones
+
+		# Time to update to definitive names
+		for bone in official_updates:
 			bones[bone[0]].name = bone[1]
 
 

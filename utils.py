@@ -25,6 +25,8 @@
 ##########################################################################################
 
 import bpy
+import random
+import string
 
 from .glob import *
 from .ui_panel import *
@@ -68,3 +70,6 @@ def update_panel(self, context):
 	JuBCR_Panel.bl_category = addonpref().category
 
 	bpy.utils.register_class(JuBCR_Panel)
+
+def get_id():
+	return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(64))
