@@ -32,8 +32,8 @@ class JuBCR_Panel(bpy.types.Panel):
     bl_label  = "Renamer"
     bl_idname = "bone_renamer"
     bl_space_type = "VIEW_3D"
-    bl_region_type = "TOOLS"
-    bl_category = "Tools"
+    bl_region_type = "UI"
+    bl_category = "BoneChainRenamer"
 
     @classmethod
     def poll(self, context):

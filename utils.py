@@ -61,8 +61,8 @@ def set_default_values():
 
 #shortcut to prefs
 def addonpref():
-	user_preferences = bpy.context.user_preferences
-	return user_preferences.addons[__package__].preferences
+	preferences = bpy.context.preferences
+	return preferences.addons[__package__].preferences
 
 def update_panel(self, context):
 	bpy.utils.unregister_class(JuBCR_Panel)
