@@ -65,11 +65,11 @@ def addonpref():
 	return preferences.addons[__package__].preferences
 
 def update_panel(self, context):
-	bpy.utils.unregister_class(JuBCR_Panel)
+	bpy.utils.unregister_class(JuBCR_PT_Panel)
 
-	JuBCR_Panel.bl_category = addonpref().category
+	JuBCR_PT_Panel.bl_category = addonpref().category
 
-	bpy.utils.register_class(JuBCR_Panel)
+	bpy.utils.register_class(JuBCR_PT_Panel)
 
 def get_id():
 	return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(64))

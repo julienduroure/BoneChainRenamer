@@ -28,9 +28,9 @@ import bpy
 
 from .glob import *
 
-class JuBCR_Panel(bpy.types.Panel):
+class JuBCR_PT_Panel(bpy.types.Panel):
     bl_label  = "Renamer"
-    bl_idname = "bone_renamer"
+    bl_idname = "BONE_PT_renamer"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "BoneChainRenamer"
@@ -44,7 +44,7 @@ class JuBCR_Panel(bpy.types.Panel):
         self.layout.operator("bones.chain_rename")
 
 def register():
-    bpy.utils.register_class(JuBCR_Panel)
+    bpy.utils.register_class(JuBCR_PT_Panel)
 
 def unregister():
-    bpy.utils.unregister_class(JuBCR_Panel)
+    bpy.utils.unregister_class(JuBCR_PT_Panel)
