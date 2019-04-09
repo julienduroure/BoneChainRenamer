@@ -31,21 +31,21 @@ from .ops import *
 from .utils import *
 
 class JuBCR_SuffixItem(bpy.types.PropertyGroup):
-	left  = bpy.props.StringProperty(default="")
-	right = bpy.props.StringProperty(default="")
+	left: bpy.props.StringProperty(default="")
+	right: bpy.props.StringProperty(default="")
 
 class JuBCR_AddonPref(bpy.types.AddonPreferences):
 	bl_idname = __package__
 
-	ju_bcr_suffix_index = bpy.props.IntProperty(default=-1)
-	ju_bcr_suffix          = bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
-	ju_bcr_separator       = bpy.props.StringProperty(default="_")
-	ju_bcr_count          		= bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
+	ju_bcr_suffix_index:	bpy.props.IntProperty(default=-1)
+	ju_bcr_suffix:			bpy.props.CollectionProperty(type=JuBCR_SuffixItem)
+	ju_bcr_separator:		bpy.props.StringProperty(default="_")
+	ju_bcr_count:			bpy.props.EnumProperty(items=JuBCR_count_items, default="INT")
 
-	category = bpy.props.StringProperty(name="Category", default="Tools", update=update_panel)
+	category:				bpy.props.StringProperty(name="Category", default="Tools", update=update_panel)
 
-	ju_bcr_single_chain_no_count    = bpy.props.BoolProperty(name="No count when single chain rename", default=True)
-	ju_bcr_stop_chain_not_connected = bpy.props.BoolProperty(name="Stop chain when bone is not connected", default=False)
+	ju_bcr_single_chain_no_count:		bpy.props.BoolProperty(name="No count when single chain rename", default=True)
+	ju_bcr_stop_chain_not_connected:	bpy.props.BoolProperty(name="Stop chain when bone is not connected", default=False)
 
 	def draw(self, context):
 		layout = self.layout

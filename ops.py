@@ -48,7 +48,7 @@ class BoneChainRename(bpy.types.Operator):
 	bl_label  = "Bone Chain Rename"
 	bl_options = {'REGISTER', 'UNDO'}
 
-	sort_type = bpy.props.EnumProperty(items=JuCR_sort_type_items, default="DISTANCE")
+	sort_type: bpy.props.EnumProperty(items=JuCR_sort_type_items, default="DISTANCE")
 
 	@classmethod
 	def poll(cls, context):

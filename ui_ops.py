@@ -33,7 +33,7 @@ class JuBCR_suffix_add(bpy.types.Operator):
 	bl_idname = "wm.ju_bcr_suffix_add"
 	bl_label  = "Add Suffix"
 
-	suffix_index = bpy.props.IntProperty()
+	suffix_index: bpy.props.IntProperty()
 
 	@classmethod
 	def poll(cls, context):
@@ -52,7 +52,7 @@ class JuBCR_suffix_remove(bpy.types.Operator):
 	bl_idname = "wm.ju_bcr_suffix_remove"
 	bl_label  = "Remove Suffix"
 
-	suffix_index = bpy.props.IntProperty()
+	suffix_index: bpy.props.IntProperty()
 
 	@classmethod
 	def poll(cls, context):
